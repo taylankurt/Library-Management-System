@@ -14,6 +14,8 @@ public class Dashboard extends JFrame {
     private JLabel labelDashboard;
     private JFrame thisobj;
 
+
+
     public static void main(String[] args) {
         var library = new Dashboard();
         library.setVisible(true);
@@ -53,6 +55,13 @@ public class Dashboard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 var addStaff = new AddStaff();
                 addStaff.setVisible(true);
+            }
+        });
+        removeBooksButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var removeBook = new RemoveBook();
+                removeBook.setVisible(true);
             }
         });
     }

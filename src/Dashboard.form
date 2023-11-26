@@ -34,6 +34,7 @@
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="DASHBOARD"/>
+              <verticalAlignment value="0"/>
             </properties>
           </component>
         </children>

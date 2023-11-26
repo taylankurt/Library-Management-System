@@ -39,10 +39,10 @@ public class AddBooks extends JFrame {
                 String mysqlpassword = "wahcaW-5cuzsi-haxfic";
                 String query = "INSERT INTO BOOK (CATEGORY, NAME, AUTHOR, COPIES) VALUES(?,?,?,?)";
                 String category = categoryTextField.getText().replace("'","\'");
-                String name = nameTextField.getText().replace("'","\'");
+                String name = nameTextField.getText();
                 String author = authorTextField.getText().replace("'","\'");
                 int copies = Integer.parseInt(copiesTextField.getText());
-                String checkQuery = "UPDATE BOOK SET COPIES = COPIES +"+copies+" WHERE NAME ='"+ name +"' AND CATEGORY ='"+ category +"' AND AUTHOR ='"+ author +"';";
+                String checkQuery = "UPDATE BOOK SET COPIES = COPIES +"+copies+" WHERE NAME ='+ name +' AND CATEGORY ='+ category +' AND AUTHOR ='+ author +';";
                 try {
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
                     var statement = connection.createStatement();

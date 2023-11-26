@@ -51,7 +51,7 @@ public class AddStaff extends JFrame {
                     statement.execute();
 
                     var message = new StringBuilder();
-                    message.append("Record ").append("'").append(firstName ).append(" ").append(lastName)
+                    message.append("Staff ").append("'").append(firstName ).append(" ").append(lastName)
                             .append("'").append(" ").append("is added successfuly");
                     JOptionPane.showMessageDialog(thisobj, message  );
 
@@ -68,6 +68,7 @@ public class AddStaff extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 thisobj.dispose();
             }
         });
