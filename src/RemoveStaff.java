@@ -9,7 +9,7 @@ public class RemoveStaff extends JFrame {
     private JTextField textField;
     private JButton CancelButton;
     private JButton DeleteButton;
-    private JFrame thisobj;
+    private final JFrame  thisobj;
 
     public static void main(String[] args) {
         var removeStaff = new RemoveStaff();
@@ -35,7 +35,7 @@ public class RemoveStaff extends JFrame {
                     var statement = connection.createStatement();
                     int rows = statement.executeUpdate(query);
                     if(rows > 0)
-                        JOptionPane.showMessageDialog(thisobj, "Staff \"{}\" is removed from library");
+                        JOptionPane.showMessageDialog(thisobj, MessageFormat.format("Staff \"{0}\" is removed from library", text));
                     else
                         JOptionPane.showMessageDialog(thisobj, "No such staff available");
                     statement.close();
