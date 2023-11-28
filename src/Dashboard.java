@@ -64,6 +64,13 @@ public class Dashboard extends JFrame {
                 removeBook.setVisible(true);
             }
         });
+        removeStaffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var removeStaff = new RemoveStaff();
+                removeStaff.setVisible(true);
+            }
+        });
     }
 
 }
