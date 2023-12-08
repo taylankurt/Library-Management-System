@@ -35,7 +35,7 @@ public class LoginPage extends  JFrame {
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
                 String password = new String(passwordField.getPassword());
                 String username = new String(usernameField.getText());
                 String query = ("SELECT PASSWORD FROM ADMIN WHERE USER_ID ='" + username + "';");

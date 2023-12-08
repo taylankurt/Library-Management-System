@@ -38,7 +38,7 @@ public class BooksAvailable extends JFrame{
                 var model = (DefaultTableModel) mainTable.getModel();
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
                 String query = "SELECT * FROM BOOK;";
                 try{
                     var connection = DriverManager.getConnection(url,mysqluser,mysqlpassword);

@@ -71,6 +71,13 @@ public class Dashboard extends JFrame {
                 removeStaff.setVisible(true);
             }
         });
+        editAdminButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var editAdmin = new EditAdmin();
+                editAdmin.setVisible(true);
+            }
+        });
     }
 
 }

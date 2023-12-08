@@ -27,7 +27,7 @@ public class StaffDetails extends JFrame {
                 var model = (DefaultTableModel) staffTable.getModel();
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
                 String query = "SELECT * FROM STAFF;";
                 try {
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);

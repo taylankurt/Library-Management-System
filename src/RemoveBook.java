@@ -24,12 +24,13 @@ public class RemoveBook extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         thisobj = this;
+
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
                 String text = textField.getText();
                 String queryString = MessageFormat.format("Delete From BOOK Where NAME= \"{0}\";", text);
                 String queryInt = MessageFormat.format("Delete From BOOK Where BOOK_ID= \"{0}\";", text);
@@ -39,14 +40,12 @@ public class RemoveBook extends JFrame {
                     int rowCount = 0;
                     if (text.matches(".*[a-z].*")) {
                         int rows = statement.executeUpdate(queryString);
-                        if(rows >0 ){
+                        if(rows >0 )
                             rowCount ++;
-                        }
                     } else {
                         int rows = statement.executeUpdate(queryInt);
-                        if(rows >0 ){
+                        if(rows >0 )
                             rowCount ++;
-                        }
                     }
                     if (rowCount > 0)
                         JOptionPane.showMessageDialog(thisobj, "Book is removed from library");

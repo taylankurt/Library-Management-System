@@ -7,7 +7,6 @@ out/
         ../Swing Gui/
         ../W3/
 
-
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -32,3 +31,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+Credentials.java

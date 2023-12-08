@@ -1,46 +1,46 @@
 import javax.swing.*;
+import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.DriverManager;
 import java.text.MessageFormat;
 
-public class RemoveStaff extends JFrame {
-    private JPanel mainPanel;
+public class EditAdmin extends JFrame {
+    private JComboBox comboBox;
     private JTextField textField;
     private JButton CancelButton;
-    private JButton DeleteButton;
-    private final JFrame  thisobj;
+    private JButton UpdateButton;
+    private JPanel mainpanel;
+    private JFrame thisobj;
 
     public static void main(String[] args) {
-        var removeStaff = new RemoveStaff();
-        removeStaff.setVisible(true);
+        var editAdmin = new EditAdmin();
+        editAdmin.setVisible(true);
     }
-
-    public RemoveStaff(){
+    public EditAdmin() {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setContentPane(mainPanel);
+        this.setContentPane(mainpanel);
         this.pack();
         this.setLocationRelativeTo(null);
         thisobj = this;
-        DeleteButton.addActionListener(new ActionListener() {
+        UpdateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
                 String mysqlpassword = "910401";
                 String text = textField.getText();
-                String query = MessageFormat.format("Delete From STAFF Where STAFF_ID= \"{0}\";", text);
-                try {
+                String column = comboBox.getSelectedItem().toString();
+                String query = MessageFormat.format( "UPDATE ADMIN SET {0}=\"{1}\";",column, text);
+                try{
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
                     var statement = connection.createStatement();
                     int rows = statement.executeUpdate(query);
                     if(rows > 0)
-                        JOptionPane.showMessageDialog(thisobj, MessageFormat.format("Staff \"{0}\" is removed from library", text));
-                    else
-                        JOptionPane.showMessageDialog(thisobj, "No such staff available");
-                    statement.close();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(thisobj, ex.getMessage());
+                        JOptionPane.showMessageDialog(thisobj, "Credentials updated successfully");
+                    textField.setText("");
+                }
+                catch (Exception ex){
+                    JOptionPane.showMessageDialog(thisobj, ex);
                 }
             }
         });
@@ -51,5 +51,4 @@ public class RemoveStaff extends JFrame {
             }
         });
     }
-
 }

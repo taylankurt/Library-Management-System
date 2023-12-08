@@ -34,7 +34,7 @@ public class AddStaff extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
 
                 String query = "INSERT INTO STAFF (FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER) VALUES(?,?,?,?)";
                 String firstName = firstNameTextField.getText();

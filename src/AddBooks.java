@@ -36,7 +36,7 @@ public class AddBooks extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
                 String mysqluser = "root";
-                String mysqlpassword = "wahcaW-5cuzsi-haxfic";
+                String mysqlpassword = "910401";
                 String query = "INSERT INTO BOOK (CATEGORY, NAME, AUTHOR, COPIES) VALUES(?,?,?,?)";
                 String category = categoryTextField.getText().replace("'","\'");
                 String name = nameTextField.getText();
