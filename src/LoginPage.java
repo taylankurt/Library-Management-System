@@ -12,7 +12,7 @@ public class LoginPage extends  JFrame {
     private JButton loginButton;
     private JPasswordField passwordField;
     private JTextField usernameField;
-    private JLabel usernameLabel; //delete these unused entries
+    private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JFrame thisobj;
 

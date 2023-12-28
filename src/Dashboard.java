@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 public class Dashboard extends JFrame {
     private JButton removeBooksButton;
     private JButton addBooksButton;
-    private JButton staffDetailsButton;
-    private JButton booksAvailableButton;
+    private JButton staffDashboardButton;
+    private JButton LibraryDashboardButton;
     private JButton addStaffButton;
     private JButton removeStaffButton;
     private JButton editAdminButton;
@@ -22,53 +22,25 @@ public class Dashboard extends JFrame {
     }
     public Dashboard(){
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
         this.setLocationRelativeTo(null);
         thisobj = this;
 
-        booksAvailableButton.addActionListener(new ActionListener() {
+        LibraryDashboardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var books = new BooksAvailable();
+                var books = new LibraryDashboard();
                 books.setVisible(true);
             }
         });
 
-        addBooksButton.addActionListener(new ActionListener() {
+        staffDashboardButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var books = new AddBooks();
-                books.setVisible(true);
-            }
-        });
-        staffDetailsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var staffDetails = new StaffDetails();
-                staffDetails.setVisible(true);
-            }
-        });
-        addStaffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var addStaff = new AddStaff();
-                addStaff.setVisible(true);
-            }
-        });
-        removeBooksButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var removeBook = new RemoveBook();
-                removeBook.setVisible(true);
-            }
-        });
-        removeStaffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var removeStaff = new RemoveStaff();
-                removeStaff.setVisible(true);
+                var staffDashboard = new StaffDashboard();
+                staffDashboard.setVisible(true);
             }
         });
         editAdminButton.addActionListener(new ActionListener() {

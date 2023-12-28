@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 
-public class AddBooks extends JFrame {
+public class AddBook extends JFrame {
     private JPanel mainPanel;
     private JTextField categoryTextField;
     private JTextField nameTextField;
@@ -20,11 +20,11 @@ public class AddBooks extends JFrame {
     private JFrame thisobj;
 
     public static void main(String[] args) {
-        var addBook = new AddBooks();
+        var addBook = new AddBook();
         addBook.setVisible(true);
     }
 
-    public AddBooks() {
+    public AddBook() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();

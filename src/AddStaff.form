@@ -126,6 +126,7 @@
               </grid>
             </constraints>
             <properties>
+              <font style="1"/>
               <text value="Back"/>
             </properties>
           </component>
@@ -138,6 +139,7 @@
               </grid>
             </constraints>
             <properties>
+              <font style="1"/>
               <text value="Add"/>
             </properties>
           </component>

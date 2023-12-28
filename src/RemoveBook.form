@@ -69,7 +69,7 @@
             </constraints>
             <properties>
               <font style="1"/>
-              <text value="CANCEL"/>
+              <text value="Cancel"/>
             </properties>
           </component>
         </children>
@@ -92,7 +92,7 @@
             </constraints>
             <properties>
               <font style="1"/>
-              <text value="DELETE"/>
+              <text value="Delete"/>
             </properties>
           </component>
         </children>
