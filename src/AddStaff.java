@@ -16,7 +16,7 @@ public class AddStaff extends JFrame {
     private JTextField lastNameTextfield;
     private JLabel lastNameLabel;
     private JTextField phoneTextField;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
     public static void main(String[] args) {
         var addStaff = new AddStaff();

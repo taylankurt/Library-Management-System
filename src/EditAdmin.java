@@ -10,7 +10,7 @@ public class EditAdmin extends JFrame {
     private JButton CancelButton;
     private JButton UpdateButton;
     private JPanel mainpanel;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
     public static void main(String[] args) {
         var editAdmin = new EditAdmin();

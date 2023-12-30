@@ -2,28 +2,28 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import javax.swing.text.TableView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
+import java.text.MessageFormat;
 
-
-public class BooksAvailable extends JFrame{
+public class EditBook extends JFrame {
     private JPanel mainPanel;
     private JTable mainTable;
     private JButton fetchButton;
-    private JButton backButton;
-    private JPanel buttonPanel;
+    private JComboBox comboBox;
+    private JTextField textField;
+    private JButton updateButton;
+    private JButton cancelButton;
+    private JTextField IdTextField;
     private final JFrame thisobj;
 
-
     public static void main(String[] args) {
-        var booksAvailable = new BooksAvailable();
-        booksAvailable.setVisible(true);
+        var editBook = new EditBook();
+        editBook.setVisible(true);
     }
 
-    public BooksAvailable(){
-
+    public EditBook() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
@@ -31,27 +31,25 @@ public class BooksAvailable extends JFrame{
         thisobj = this;
 
         createTable();
-
         fetchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 var model = (DefaultTableModel) mainTable.getModel();
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
-                String mysqluser = "root";
-                String mysqlpassword = "910401";
+                String mysqlUser = "root";
+                String mysqlPassword = "910401";
                 String query = "SELECT * FROM BOOK;";
                 try{
-                    var connection = DriverManager.getConnection(url,mysqluser,mysqlpassword);
+                    var connection = DriverManager.getConnection(url,mysqlUser,mysqlPassword);
                     var statement = connection.createStatement();
                     var resultset = statement.executeQuery(query);
                     int rowCount = model.getRowCount();
-
-                    if(rowCount > 0){
+                    if (rowCount > 0){
                         for (int i = 0; i < rowCount ; i++) {
                             model.removeRow(0);
                         }
                     }
-
                     while (resultset.next()){
                         String bookId = resultset.getString("BOOK_ID");
                         String category = resultset.getString("CATEGORY");
@@ -68,11 +66,35 @@ public class BooksAvailable extends JFrame{
                 }
             }
         });
-        backButton.addActionListener(new ActionListener() {
+        cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    thisobj.dispose();
+                thisobj.dispose();
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
+                String mysqlUser = "root";
+                String mysqlPassword = "910401";
+                String selectedField = comboBox.getSelectedItem().toString();
+                String updatedValue = textField.getText();
+                String BookId = IdTextField.getText();
+                String query = MessageFormat.format("Update BOOK SET {0} = \"{1}\" WHERE BOOK_ID = {2};", selectedField, updatedValue, BookId );
+                try {
+                    var connection = DriverManager.getConnection(url, mysqlUser, mysqlPassword);
+                    var statement = connection.createStatement();
+                    int rowCount = statement.executeUpdate(query);
+                    if (rowCount > 0)
+                        JOptionPane.showMessageDialog(thisobj, "Updated successfully");
+                    else
+                        JOptionPane.showMessageDialog(thisobj, "Update failed");
+
+                }catch (Exception ex) {
+                    JOptionPane.showMessageDialog(thisobj, ex.getMessage());
+                }
             }
         });
     }

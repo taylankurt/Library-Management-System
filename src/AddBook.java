@@ -17,7 +17,7 @@ public class AddBook extends JFrame {
     private JLabel copiesLabel;
     private JPanel headerPanel;
     private JLabel headerTextfield;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
     public static void main(String[] args) {
         var addBook = new AddBook();
@@ -38,9 +38,9 @@ public class AddBook extends JFrame {
                 String mysqluser = "root";
                 String mysqlpassword = "910401";
                 String query = "INSERT INTO BOOK (CATEGORY, NAME, AUTHOR, COPIES) VALUES(?,?,?,?)";
-                String category = categoryTextField.getText().replace("'","\'");
+                String category = categoryTextField.getText().replace("'", "'");
                 String name = nameTextField.getText();
-                String author = authorTextField.getText().replace("'","\'");
+                String author = authorTextField.getText().replace("'", "'");
                 int copies = Integer.parseInt(copiesTextField.getText());
                 String checkQuery = "UPDATE BOOK SET COPIES = COPIES +"+copies+" WHERE NAME ='+ name +' AND CATEGORY ='+ category +' AND AUTHOR ='+ author +';";
                 try {

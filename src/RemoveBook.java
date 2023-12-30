@@ -10,7 +10,7 @@ public class RemoveBook extends JFrame {
     private JButton deleteButton;
     private JButton cancelButton;
     private JTextField textFieldName;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
 
     public static void main(String[] args) {
@@ -29,13 +29,13 @@ public class RemoveBook extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:mysql://localhost:3306/library?useSSL=true";
-                String mysqluser = "root";
-                String mysqlpassword = "910401";
+                String mysqlUser = "root";
+                String mysqlPassword = "910401";
                 String text = textField.getText();
                 String queryString = MessageFormat.format("Delete From BOOK Where NAME= \"{0}\";", text);
                 String queryInt = MessageFormat.format("Delete From BOOK Where BOOK_ID= \"{0}\";", text);
                 try {
-                    var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
+                    var connection = DriverManager.getConnection(url, mysqlUser, mysqlPassword);
                     var statement = connection.createStatement();
                     int rowCount = 0;
                     if (text.matches(".*[a-z].*")) {

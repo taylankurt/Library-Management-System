@@ -12,7 +12,7 @@ public class Dashboard extends JFrame {
     private JButton editAdminButton;
     private JPanel mainPanel;
     private JLabel labelDashboard;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
 
 
@@ -22,7 +22,7 @@ public class Dashboard extends JFrame {
     }
     public Dashboard(){
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
         this.setLocationRelativeTo(null);

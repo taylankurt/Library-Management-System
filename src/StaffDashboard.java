@@ -41,5 +41,12 @@ public class StaffDashboard extends JFrame {
                 removeStaff.setVisible(true);
             }
         });
+        editStaffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var editStaff = new EditStaff();
+                editStaff.setVisible(true);
+            }
+        });
     }
 }

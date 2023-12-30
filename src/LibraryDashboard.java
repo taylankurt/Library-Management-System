@@ -40,5 +40,12 @@ public class LibraryDashboard extends JFrame{
                 removeBook.setVisible(true);
             }
         });
+        editBookButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var editBook = new EditBook();
+                editBook.setVisible(true);
+            }
+        });
     }
 }

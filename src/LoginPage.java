@@ -14,7 +14,7 @@ public class LoginPage extends  JFrame {
     private JTextField usernameField;
     private JLabel usernameLabel;
     private JLabel passwordLabel;
-    private JFrame thisobj;
+    private final JFrame thisobj;
 
     public static void main(String[] args) {
         var login = new LoginPage();
@@ -37,7 +37,7 @@ public class LoginPage extends  JFrame {
                 String mysqluser = "root";
                 String mysqlpassword = "910401";
                 String password = new String(passwordField.getPassword());
-                String username = new String(usernameField.getText());
+                String username = usernameField.getText();
                 String query = ("SELECT PASSWORD FROM ADMIN WHERE USER_ID ='" + username + "';");
 
                 try {
