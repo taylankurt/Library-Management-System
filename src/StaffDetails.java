@@ -13,6 +13,11 @@ public class StaffDetails extends JFrame {
     private JButton fetchButton;
     private JFrame thisobj;
 
+    public static void main(String[] args) {
+        var staffDetails = new StaffDetails();
+        staffDetails.setVisible(true);
+    }
+
     public StaffDetails() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
@@ -62,11 +67,6 @@ public class StaffDetails extends JFrame {
                 thisobj.dispose();
             }
         });
-    }
-
-    public static void main(String[] args) {
-        var staffDetails = new StaffDetails();
-        staffDetails.setVisible(true);
     }
 
     public void createTable() {
