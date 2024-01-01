@@ -35,7 +35,7 @@ public class StaffDetails extends JFrame {
                     var resultset = statement.executeQuery(query);
                     int rowCount = model.getRowCount();
 
-                    if(rowCount > 0){
+                    if (rowCount > 0) {
                         for (int i = 0; i < rowCount; i++) {
                             model.removeRow(0);
                         }

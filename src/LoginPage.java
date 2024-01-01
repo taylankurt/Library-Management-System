@@ -5,8 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.MessageFormat;
 
-public class LoginPage extends  JFrame {
+public class LoginPage extends JFrame {
     private JLabel libraryLabel;
     private JPanel mainPanel;
     private JButton loginButton;
@@ -38,7 +39,7 @@ public class LoginPage extends  JFrame {
                 String mysqlpassword = "910401";
                 String password = new String(passwordField.getPassword());
                 String username = usernameField.getText();
-                String query = ("SELECT PASSWORD FROM ADMIN WHERE USER_ID ='" + username + "';");
+                String query = MessageFormat.format("SELECT PASSWORD FROM ADMIN WHERE USER_ID =\"{0}\";", username);
 
                 try {
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
@@ -51,9 +52,9 @@ public class LoginPage extends  JFrame {
                             dashboard.setVisible(true);
                             thisobj.dispose();
                         } else
-                            JOptionPane.showMessageDialog(thisobj, "username or password is false");
+                            JOptionPane.showMessageDialog(thisobj, "Username or password is false");
                     } else
-                        JOptionPane.showMessageDialog(thisobj, "Wrong Username");
+                        JOptionPane.showMessageDialog(thisobj, "Wrong username");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }

@@ -15,12 +15,12 @@ public class Dashboard extends JFrame {
     private final JFrame thisobj;
 
 
-
     public static void main(String[] args) {
         var library = new Dashboard();
         library.setVisible(true);
     }
-    public Dashboard(){
+
+    public Dashboard() {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);

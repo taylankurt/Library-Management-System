@@ -40,17 +40,17 @@ public class EditBook extends JFrame {
                 String mysqlUser = "root";
                 String mysqlPassword = "910401";
                 String query = "SELECT * FROM BOOK;";
-                try{
-                    var connection = DriverManager.getConnection(url,mysqlUser,mysqlPassword);
+                try {
+                    var connection = DriverManager.getConnection(url, mysqlUser, mysqlPassword);
                     var statement = connection.createStatement();
                     var resultset = statement.executeQuery(query);
                     int rowCount = model.getRowCount();
-                    if (rowCount > 0){
-                        for (int i = 0; i < rowCount ; i++) {
+                    if (rowCount > 0) {
+                        for (int i = 0; i < rowCount; i++) {
                             model.removeRow(0);
                         }
                     }
-                    while (resultset.next()){
+                    while (resultset.next()) {
                         String bookId = resultset.getString("BOOK_ID");
                         String category = resultset.getString("CATEGORY");
                         String name = resultset.getString("NAME");
@@ -60,8 +60,7 @@ public class EditBook extends JFrame {
                     }
                     resultset.close();
                     statement.close();
-                }
-                catch (Exception ex){
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }
             }
@@ -82,7 +81,7 @@ public class EditBook extends JFrame {
                 String selectedField = comboBox.getSelectedItem().toString();
                 String updatedValue = textField.getText();
                 String BookId = IdTextField.getText();
-                String query = MessageFormat.format("Update BOOK SET {0} = \"{1}\" WHERE BOOK_ID = {2};", selectedField, updatedValue, BookId );
+                String query = MessageFormat.format("Update BOOK SET {0} = \"{1}\" WHERE BOOK_ID = {2};", selectedField, updatedValue, BookId);
                 try {
                     var connection = DriverManager.getConnection(url, mysqlUser, mysqlPassword);
                     var statement = connection.createStatement();
@@ -92,14 +91,14 @@ public class EditBook extends JFrame {
                     else
                         JOptionPane.showMessageDialog(thisobj, "Update failed");
 
-                }catch (Exception ex) {
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }
             }
         });
     }
 
-    public void createTable(){
+    public void createTable() {
         mainTable.setModel(new DefaultTableModel(
                 null,
                 new String[]{"BOOK_ID", "CATEGORY", "NAME", "AUTHOR", "COPIES"}

@@ -24,7 +24,7 @@ public class EditStaff extends JFrame {
         editStaff.setVisible(true);
     }
 
-    public EditStaff(){
+    public EditStaff() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
@@ -46,7 +46,7 @@ public class EditStaff extends JFrame {
                     var resultset = statement.executeQuery(query);
                     int rowCount = model.getRowCount();
 
-                    if(rowCount > 0){
+                    if (rowCount > 0) {
                         for (int i = 0; i < rowCount; i++) {
                             model.removeRow(0);
                         }
@@ -76,18 +76,17 @@ public class EditStaff extends JFrame {
                 String selectedField = comboBox.getSelectedItem().toString();
                 String updatedValue = textField.getText();
                 String staffId = IdTextField.getText();
-                String query = MessageFormat.format("Update STAFF SET {0} = \"{1}\" WHERE STAFF_ID = {2};", selectedField, updatedValue, staffId );
+                String query = MessageFormat.format("Update STAFF SET {0} = \"{1}\" WHERE STAFF_ID = {2};", selectedField, updatedValue, staffId);
                 try {
                     var connection = DriverManager.getConnection(url, mysqlUser, mysqlPassword);
                     var statement = connection.createStatement();
                     int rowCount = statement.executeUpdate(query);
                     if (rowCount > 0) {
                         JOptionPane.showMessageDialog(thisobj, "Updated successfully");
-                    }
-                    else
+                    } else
                         JOptionPane.showMessageDialog(thisobj, "Update failed");
 
-                }catch (Exception ex) {
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }
             }
@@ -99,6 +98,7 @@ public class EditStaff extends JFrame {
             }
         });
     }
+
     public void createTable() {
         mainTable.setModel(new DefaultTableModel(
                 null,

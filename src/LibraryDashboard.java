@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LibraryDashboard extends JFrame{
+public class LibraryDashboard extends JFrame {
     private JPanel mainPanel;
     private JButton booksAvailableButton;
     private JButton editBookButton;
@@ -14,7 +14,7 @@ public class LibraryDashboard extends JFrame{
         libraryDashboard.setVisible(true);
     }
 
-    public LibraryDashboard(){
+    public LibraryDashboard() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();

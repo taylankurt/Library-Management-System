@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
+import java.text.MessageFormat;
 
 public class AddStaff extends JFrame {
 
@@ -23,7 +24,7 @@ public class AddStaff extends JFrame {
         addStaff.setVisible(true);
     }
 
-    public AddStaff(){
+    public AddStaff() {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
@@ -41,7 +42,7 @@ public class AddStaff extends JFrame {
                 String lastName = lastNameTextfield.getText();
                 String email = emailTextField.getText();
                 String phoneNumber = phoneTextField.getText();
-                try{
+                try {
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
                     var statement = connection.prepareCall(query);
                     statement.setString(1, firstName);
@@ -50,17 +51,14 @@ public class AddStaff extends JFrame {
                     statement.setString(4, phoneNumber);
                     statement.execute();
 
-                    var message = new StringBuilder();
-                    message.append("Staff ").append("'").append(firstName ).append(" ").append(lastName)
-                            .append("'").append(" ").append("is added successfuly");
-                    JOptionPane.showMessageDialog(thisobj, message  );
+                    String message = MessageFormat.format("Staff  \"{0}\" \"{1}\" is added successfully", firstName, lastName);
+                    JOptionPane.showMessageDialog(thisobj, message);
 
                     firstNameTextField.setText(null);
                     lastNameTextfield.setText(null);
                     emailTextField.setText(null);
                     phoneTextField.setText(null);
-                }
-                catch (Exception ex){
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }
             }

@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.DriverManager;
+import java.text.MessageFormat;
 
 public class AddBook extends JFrame {
     private JPanel mainPanel;
@@ -42,15 +43,13 @@ public class AddBook extends JFrame {
                 String name = nameTextField.getText();
                 String author = authorTextField.getText().replace("'", "'");
                 int copies = Integer.parseInt(copiesTextField.getText());
-                String checkQuery = "UPDATE BOOK SET COPIES = COPIES +"+copies+" WHERE NAME ='+ name +' AND CATEGORY ='+ category +' AND AUTHOR ='+ author +';";
+                String checkQuery = MessageFormat.format("UPDATE BOOK SET COPIES = COPIES + \"{0}\" WHERE NAME =\"{1}\" AND CATEGORY =\"{2}\" AND AUTHOR =\"{3}\";", copies, name, category, author);
                 try {
                     var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
                     var statement = connection.createStatement();
                     int rowCount = statement.executeUpdate(checkQuery);
                     if (rowCount > 0) {
-                        var update = new StringBuilder();
-                        update.append("Record ").append("'").append(name).append("'").append(" ").append("is updated successfuly ")
-                                .append("with ").append(copies).append(" copie(s)");
+                        String update = MessageFormat.format("Record \"{0}\" is updated successfully with \"{1}\" copies(s)", name, copies);
                         JOptionPane.showMessageDialog(thisobj, update);
                     } else {
                         var queryStatement = connection.prepareCall(query);
@@ -60,8 +59,7 @@ public class AddBook extends JFrame {
                         queryStatement.setInt(4, copies);
                         queryStatement.execute();
                         var message = new StringBuilder();
-                        message.append("Record ").append("'").append(name).append("'").append(" ").append("is added successfuly ")
-                                .append("with ").append(copies).append(" copie(s)");
+                        message.append("Record ").append("'").append(name).append("'").append(" ").append("is added successfuly ").append("with ").append(copies).append(" copie(s)");
                         JOptionPane.showMessageDialog(thisobj, message);
                     }
                     nameTextField.setText(null);

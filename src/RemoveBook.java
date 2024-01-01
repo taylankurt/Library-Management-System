@@ -40,12 +40,12 @@ public class RemoveBook extends JFrame {
                     int rowCount = 0;
                     if (text.matches(".*[a-z].*")) {
                         int rows = statement.executeUpdate(queryString);
-                        if(rows >0 )
-                            rowCount ++;
+                        if (rows > 0)
+                            rowCount++;
                     } else {
                         int rows = statement.executeUpdate(queryInt);
-                        if(rows >0 )
-                            rowCount ++;
+                        if (rows > 0)
+                            rowCount++;
                     }
                     if (rowCount > 0)
                         JOptionPane.showMessageDialog(thisobj, "Book is removed from library");

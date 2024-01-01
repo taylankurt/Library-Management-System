@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 
 
-public class BooksAvailable extends JFrame{
+public class BooksAvailable extends JFrame {
     private JPanel mainPanel;
     private JTable mainTable;
     private JButton fetchButton;
@@ -22,7 +22,7 @@ public class BooksAvailable extends JFrame{
         booksAvailable.setVisible(true);
     }
 
-    public BooksAvailable(){
+    public BooksAvailable() {
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
@@ -40,19 +40,19 @@ public class BooksAvailable extends JFrame{
                 String mysqluser = "root";
                 String mysqlpassword = "910401";
                 String query = "SELECT * FROM BOOK;";
-                try{
-                    var connection = DriverManager.getConnection(url,mysqluser,mysqlpassword);
+                try {
+                    var connection = DriverManager.getConnection(url, mysqluser, mysqlpassword);
                     var statement = connection.createStatement();
                     var resultset = statement.executeQuery(query);
                     int rowCount = model.getRowCount();
 
-                    if(rowCount > 0){
-                        for (int i = 0; i < rowCount ; i++) {
+                    if (rowCount > 0) {
+                        for (int i = 0; i < rowCount; i++) {
                             model.removeRow(0);
                         }
                     }
 
-                    while (resultset.next()){
+                    while (resultset.next()) {
                         String bookId = resultset.getString("BOOK_ID");
                         String category = resultset.getString("CATEGORY");
                         String name = resultset.getString("NAME");
@@ -62,8 +62,7 @@ public class BooksAvailable extends JFrame{
                     }
                     resultset.close();
                     statement.close();
-                }
-                catch (Exception ex){
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(thisobj, ex.getMessage());
                 }
             }
@@ -71,13 +70,13 @@ public class BooksAvailable extends JFrame{
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    thisobj.dispose();
+                thisobj.dispose();
 
             }
         });
     }
 
-    public void createTable(){
+    public void createTable() {
         mainTable.setModel(new DefaultTableModel(
                 null,
                 new String[]{"BOOK_ID", "CATEGORY", "NAME", "AUTHOR", "COPIES"}

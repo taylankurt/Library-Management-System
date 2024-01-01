@@ -14,7 +14,7 @@ public class StaffDashboard extends JFrame {
         staffDashboard.setVisible(true);
     }
 
-    public StaffDashboard(){
+    public StaffDashboard() {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
