@@ -66,7 +66,6 @@ public class AddStaff extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 thisobj.dispose();
             }
         });

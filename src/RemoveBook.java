@@ -61,7 +61,6 @@ public class RemoveBook extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 thisobj.dispose();
-
             }
         });
     }
